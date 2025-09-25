@@ -9,22 +9,18 @@ struct Territorio {
 
 int main() {
     struct Territorio territorios[5];
+    int i;
     
     printf("=== SISTEMA DE CADASTRO DE TERRITORIOS ===\n\n");
     
-    for (int i = 0; i < 5; i++) {
+    for (i = 0; i < 5; i++) {
         printf("--- Cadastro do Territorio %d ---\n", i + 1);
         
-        // Limpa o buffer do teclado antes de ler strings
-        while (getchar() != '\n');
-        
         printf("Digite o nome do territorio: ");
-        fgets(territorios[i].nome, 30, stdin);
-        territorios[i].nome[strcspn(territorios[i].nome, "\n")] = 0; // Remove \n
+        scanf("%29s", territorios[i].nome);
         
         printf("Digite a cor do exercito: ");
-        fgets(territorios[i].cor, 10, stdin);
-        territorios[i].cor[strcspn(territorios[i].cor, "\n")] = 0; // Remove \n
+        scanf("%9s", territorios[i].cor);
         
         printf("Digite a quantidade de tropas: ");
         scanf("%d", &territorios[i].tropas);
@@ -34,12 +30,11 @@ int main() {
     
     printf("\n=== DADOS DOS TERRITORIOS CADASTRADOS ===\n\n");
     
-    for (int i = 0; i < 5; i++) {
+    for (i = 0; i < 5; i++) {
         printf("Territorio %d:\n", i + 1);
         printf("  Nome: %s\n", territorios[i].nome);
         printf("  Cor do exercito: %s\n", territorios[i].cor);
-        printf("  Tropas: %d\n", territorios[i].tropas);
-        printf("\n");
+        printf("  Tropas: %d\n\n", territorios[i].tropas);
     }
     
     return 0;
